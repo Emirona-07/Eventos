@@ -1,0 +1,31 @@
+<% include partials/header %>
+	<form method="POST" action="/categoria/">
+    	<div class="col-sm-6 col-md-offset-3">
+            <h4>Agregar nueva categoría:</h4>
+            <div class="panel panel-default">
+                <div class="panel-body form-horizontal payment-form">
+ 
+                	<div class="form-group">
+                        <label for="Nombre" class="col-sm-3 control-label">Nombre</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="Nombre" name="Nombre" 
+                            value="<%=info[0].Nombre%>">
+                        </div>
+                    </div> 
+ 
+                    <!--campo oculto para decirle a express que es una petición put-->
+                    <input type="hidden" name="_method" value="POST">
+                    <!--campo oculto con el id del evento-->
+                    <input type="hidden" name="ID" value="<%=info[0].ID%>">
+                    <div class="form-group">
+                        <div class="col-sm-12 text-right">
+                            <button type="submit" class="btn btn-primary preview-edit-button">
+                                <span class="glyphicon glyphicon-edit"></span> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div> <!-- / panel preview -->
+    </form>
+<% include partials/footer %>

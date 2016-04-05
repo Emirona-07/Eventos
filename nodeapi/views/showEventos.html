@@ -1,0 +1,50 @@
+<% include partials/header %>
+	<% if (eventos.length) 
+	{ %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>NombreBD</th>
+				<th>Descripcion</th>
+				<th>Categoria</th>
+				<th>Imagen</th>
+				<th>Fecha de Inicio</th>
+				<th>Color</th>
+				<th>Editar</th>
+				<th>Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>	
+		    <% eventos.forEach(function(evento) { %> 
+			    <tr>
+					<td><%= evento.Nombre %></td>
+					<td><%= evento.NombreBD %></td>
+					<td><%= evento.Descripcion %></td>
+					<td><%= evento.IDCategoria %></td>
+					<td><div style="background-image: url(<%= evento.Imagen %>); height: 200px; width: 300px; border: 1px solid black;"></div></td>
+					<td><input type="datetime-local" class="form-control" id="FechaInicio" name="FechaInicio" value="<%= evento.FechaInicio %>" disabled></td>
+					<td><input type="color" value="<%= evento.Color %>" disabled></td>
+					<td><a href="/evento/<%= evento.ID %>" class="btn btn-success">
+							<span class="glyphicon glyphicon-edit"></span> Editar
+						</a>
+					</td>
+					<td>
+						<form method="POST" action="/evento">
+							<input type="hidden" name="_method" value="DELETE">
+		                    <input type="hidden" name="ID" value="<%= evento.ID %>">
+	                        <button type="submit" class="btn btn-danger preview-add-button">
+	                            <span class="glyphicon glyphicon-plus"></span> Eliminar
+	                        </button>
+						</form>
+					</td>
+				</tr>
+			<% }); %>
+		</tbody>
+	</table>
+	<% }
+	else
+	{ %>
+		<div class="alert alert-danger">Actualmente no hay eventos</div>
+	<% } %>
+<% include partials/footer %>

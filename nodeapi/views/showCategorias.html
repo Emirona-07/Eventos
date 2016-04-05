@@ -1,0 +1,38 @@
+<% include partials/header %>
+	<% if (categorias.length) 
+	{ %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Editar</th>
+				<th>Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>	
+		    <% categorias.forEach(function(categoria) { %> 
+			    <tr>
+					<td><%= categoria.Nombre %></td>
+					<td><a href="/categoria/<%=categoria.ID%>" class="btn btn-success">
+							<span class="glyphicon glyphicon-edit"></span> Editar
+						</a>
+					</td>
+					<td>
+						<form method="POST" action="/categoria">
+							<input type="hidden" name="_method" value="DELETE">
+		                    <input type="hidden" name="ID" value="<%= categoria.ID %>">
+	                        <button type="submit" class="btn btn-danger preview-add-button">
+	                            <span class="glyphicon glyphicon-plus"></span> Eliminar
+	                        </button>
+						</form>
+					</td>
+				</tr>
+			<% }); %>
+		</tbody>
+	</table>
+	<% }
+	else
+	{ %>
+		<div class="alert alert-danger">Actualmente no hay categorías</div>
+	<% } %>
+<% include partials/footer %>
