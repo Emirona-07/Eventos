@@ -26,13 +26,14 @@ var upload = multer({ storage : storage}).single('Imagen');
 /* Mostramos el formualario para crear usuarios nuevos */
 router.get('/', function(req, res) 
 {
-    CategoriaModel.getCategorias(function(error, categorias)
-    {
-        res.render("index",{ 
-            title: "Gestor de Eventos", 
-            categorias: categorias
-        });
-    });
+    res.render("prueba");
+   // CategoriaModel.getCategorias(function(error, categorias)
+   // {
+    //    res.render("index",{ 
+     //       title: "Gestor de Eventos", 
+     //       categorias: categorias
+      //  });
+   // });
 });
  
 router.get('/nuevaCategoria', function(req, res) 
